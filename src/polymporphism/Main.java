@@ -2,6 +2,7 @@ package polymporphism;
 
 import polymporphism.ProviderCode.Animal;
 import polymporphism.ProviderCode.Frog;
+import polymporphism.ProviderCode.Horse;
 import polymporphism.ProviderCode.Kangaroo;
 
 public class Main {
@@ -21,6 +22,9 @@ public class Main {
 		animal = new Kangaroo("Tý", 5);
 		//gửi thông điệp gián tiếp 
 		//đến đối hành vi jump() tượng kangaroo
+		animal.jump();
+		
+		animal = new Horse();
 		animal.jump();
 		
 	}

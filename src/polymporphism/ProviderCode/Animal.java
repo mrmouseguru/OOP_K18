@@ -1,6 +1,6 @@
 package polymporphism.ProviderCode;
 
-public class Animal {
+public abstract class Animal {
 	protected String name;
 	
 	protected Animal() {
@@ -10,8 +10,8 @@ public class Animal {
 	protected Animal(String _name) {
 		name = _name;
 	}
-	
-	public void jump() {
-		System.out.println("Jumping ...");
-	}
+	//abstract interfaces
+	//abstract methods
+	//contracts
+	public abstract void  jump();
 }
