@@ -1,10 +1,16 @@
 package QuanLyChuyenXe;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 public class QLCXMenuGUI extends JFrame{
 	private JMenuBar menuBar;
@@ -31,6 +37,13 @@ public class QLCXMenuGUI extends JFrame{
 		menuBar = new JMenuBar();
 		//Menu chức năng
 		JMenu chucNang = new JMenu("Chức năng");
+		//menu item - thêm chuyến xe
+		JMenuItem themCX = new JMenuItem("Thêm CX");
+		//tham chiếu ThemCXActionListener
+		ThemCXListener themCXAL = new ThemCXListener();
+		themCX.addActionListener(themCXAL);
+		//đưa vào menu chức năng
+		chucNang.add(themCX);
 		//Menu tùy chọn
 		JMenu tuyChon = new JMenu("Tùy chọn");
 		JMenu hoTro = new JMenu("Hỗ trợ");
@@ -41,6 +54,23 @@ public class QLCXMenuGUI extends JFrame{
 		menuBar.add(hoTro);
 		//thêm menu bar vào cửa sổ
 		setJMenuBar(menuBar);
+		
+		//"Được phát triển bởi GDUers
+		JLabel lbFooter = 
+				new JLabel("Được phát triển bởi GDUers"
+						, SwingConstants.CENTER);
+		//đặt label vào cửa sổ
+		add(lbFooter, BorderLayout.SOUTH);
+		
 	}
 
+	private class ThemCXListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JOptionPane.showMessageDialog(null,
+					"Hello baby!!!");
+		}
+		
+	}
 }
