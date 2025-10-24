@@ -12,6 +12,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
+import QuanLyChuyenXe.themCX.FormThemCXGUI;
+
 public class QLCXMenuGUI extends JFrame{
 	private JMenuBar menuBar;
 	public QLCXMenuGUI() {
@@ -68,8 +70,11 @@ public class QLCXMenuGUI extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			JOptionPane.showMessageDialog(null,
-					"Hello baby!!!");
+			//JOptionPane.showMessageDialog(null,
+					//"Hello baby!!!");
+			FormThemCXGUI formThemCX;
+			//Hiển thị form
+			new FormThemCXGUI();
 		}
 		
 	}
