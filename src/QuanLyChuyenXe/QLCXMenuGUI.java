@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Action;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -12,6 +13,9 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
+import QuanLyChuyenXe.inDanhSachCX.InDSCXControl;
+import QuanLyChuyenXe.inDanhSachCX.InDSCXDAO;
+import QuanLyChuyenXe.inDanhSachCX.TableDSCXGUI;
 import QuanLyChuyenXe.themCX.FormThemCXGUI;
 
 public class QLCXMenuGUI extends JFrame{
@@ -46,6 +50,15 @@ public class QLCXMenuGUI extends JFrame{
 		themCX.addActionListener(themCXAL);
 		//đưa vào menu chức năng
 		chucNang.add(themCX);
+		
+		//In danh sách cx
+		JMenuItem inDSCX = new JMenuItem("In DS các CX");
+		
+		ActionListener inCXListener = null;
+		inCXListener = new InDSCXListener();
+		inDSCX.addActionListener(inCXListener);
+		chucNang.add(inDSCX);
+		
 		//Menu tùy chọn
 		JMenu tuyChon = new JMenu("Tùy chọn");
 		JMenu hoTro = new JMenu("Hỗ trợ");
@@ -72,9 +85,22 @@ public class QLCXMenuGUI extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			//JOptionPane.showMessageDialog(null,
 					//"Hello baby!!!");
-			FormThemCXGUI formThemCX;
+			//FormThemCXGUI formThemCX;
 			//Hiển thị form
 			new FormThemCXGUI();
+		}
+		
+	}
+	
+	private class InDSCXListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			InDSCXDAO dscxdao = new InDSCXDAO();
+			TableDSCXGUI tableDSCXGUI = new TableDSCXGUI();
+			InDSCXControl inDscxControl = new InDSCXControl(dscxdao, tableDSCXGUI);
+			inDscxControl.execute();
+			
 		}
 		
 	}

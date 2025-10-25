@@ -5,6 +5,8 @@ public class CXNoiThanh extends ChuyenXe{
 	private int soTuyen;
 	private double soKm;
 	
+	
+	
 	public CXNoiThanh() {
 		
 	}
@@ -22,7 +24,7 @@ public class CXNoiThanh extends ChuyenXe{
 	}
 	
 	@Override
-	protected double tinhTien() {
+	public double tinhTien() {
 		double tien = 0.0;
 		tien = gia * soKm;
 		return tien;

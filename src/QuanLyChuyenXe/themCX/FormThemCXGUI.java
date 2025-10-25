@@ -10,6 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import QuanLyChuyenXe.CXNoiThanh;
+import QuanLyChuyenXe.ChuyenXe;
+
 
 public class FormThemCXGUI extends JFrame{
 	private JLabel lblMaCX, lblHoTenTX, lblSoxe,
@@ -26,7 +29,7 @@ public class FormThemCXGUI extends JFrame{
 		setLocationRelativeTo(null);
 		GridLayout gridLayout = new 
 				GridLayout(10, 2, 5, 5);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(gridLayout);
 		initComponents();
 		//bó sát
@@ -57,7 +60,7 @@ public class FormThemCXGUI extends JFrame{
 		
 		lblLoaiCX = new JLabel("Loại CX");
 		cboLoaiCX = new JComboBox<String>(
-				new String[] {"Nội thành", "Ngoại thành"}
+				new String[] {"Nội Thành", "Ngoại Thành"}
 				);
 		add(lblLoaiCX);
 		add(cboLoaiCX);
@@ -107,6 +110,38 @@ public class FormThemCXGUI extends JFrame{
 			//gửi thông điệp đến đối tượng Control
 			//bài tập vè nhà
 			//sihh viên code tiếp vào đây
+			ThemCXControl themCXControl = null;
+			ThemCXDAO themCXDAO = null;
+			themCXDAO = new ThemCXDAO();
+			ThemCXResultDialogGUI resultDialogGUI = new ThemCXResultDialogGUI();
+			
+			ReqData request = new ReqData();
+			request.maCX = Integer.parseInt(txtMaCX.getText());
+			request.hoTenTX = txtHoTenTX.getText();
+			request.soXe = txtSoxe.getText();
+			request.gia = Double.parseDouble(txtGia.getText());
+			
+			String loaiCX = cboLoaiCX.getSelectedItem().toString();
+			request.loaiCX = loaiCX;
+			
+			if(loaiCX.equalsIgnoreCase("Nội Thành")) {
+				request.soTuyen = Integer.parseInt(txtSoTuyen.getText());
+				request.soKm = Double.parseDouble(txtSokm.getText());
+				
+				
+			}
+			
+			if(loaiCX.equalsIgnoreCase("Ngoại Thành")) {
+				request.noiDen = txtNoiDen.getText();
+				request.ngayDi = Integer.parseInt(txtNgayDi.getText());
+			}
+			
+			themCXControl = new ThemCXControl(resultDialogGUI, themCXDAO);
+			
+			themCXControl.execute(request);
+			
+			
+			
 		}
 		
 	}
