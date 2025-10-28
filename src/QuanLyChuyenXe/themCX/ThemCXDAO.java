@@ -1,14 +1,12 @@
 package QuanLyChuyenXe.themCX;
 
 import QuanLyChuyenXe.ChuyenXe;
-import QuanLyChuyenXe.MemoryCXDatabase;
 
-public class ThemCXDAO {
+public interface ThemCXDAO {
 	
-	public void insert (ChuyenXe cx) {
+	void insert (ChuyenXe cx);
+	
+	boolean checkMaCX(int ma);
 		
-		MemoryCXDatabase.put(cx);
-		
-	}
 
 }

@@ -1,5 +1,6 @@
 package QuanLyChuyenXe.inDanhSachCX;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import QuanLyChuyenXe.CXNoiThanh;
@@ -19,17 +20,27 @@ public class InDSCXControl {
 
 
 	public void execute() {
-		ArrayList<ChuyenXe> ds =  inDSCXDAO.getAllCX();
+		
+		ArrayList<ChuyenXe> ds = null;
+		try {
+			ds =  inDSCXDAO.getAllCX();
+		}catch(FileNotFoundException fNFE) {
+			ResData resError = new ResData();
+			resError.message = fNFE.getMessage();
+			tableDSCXGUI.show(resError);
+			return;
+		}
 		ArrayList<ResItem> resList  = null;
 		ResData resData = new ResData();
 		
-		if(ds != null) {
+		
+		if(ds.size() > 0) {
 			resList = convertToRes(ds);
 			resData.resList = resList;
 		}else {
 			resData.message = "Danh sách rỗng!!!";
 		}
-		
+			
 		tableDSCXGUI.show(resData);
 		
 	}

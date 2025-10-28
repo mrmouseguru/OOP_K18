@@ -19,11 +19,17 @@ public class MemoryCXDatabase {
 	}
 	
 	public static ArrayList<ChuyenXe> getAll(){
-		if(db.size() > 0) {
 			return new ArrayList<ChuyenXe>(db.values());
-		}else return null;
 		
 		
+	}
+	
+	public static boolean checkMaCX(int maCX) {
+		ChuyenXe cx = db.get(maCX);
+		if(cx != null)
+			return false;
+		
+		return true;
 	}
 	
 	public static void main(String[] args) {

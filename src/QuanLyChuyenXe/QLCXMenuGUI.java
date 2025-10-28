@@ -13,8 +13,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
+import QuanLyChuyenXe.inDanhSachCX.FileInDSCXDAO;
 import QuanLyChuyenXe.inDanhSachCX.InDSCXControl;
 import QuanLyChuyenXe.inDanhSachCX.InDSCXDAO;
+import QuanLyChuyenXe.inDanhSachCX.MemoryInDSCXDAO;
 import QuanLyChuyenXe.inDanhSachCX.TableDSCXGUI;
 import QuanLyChuyenXe.themCX.FormThemCXGUI;
 
@@ -96,7 +98,7 @@ public class QLCXMenuGUI extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			InDSCXDAO dscxdao = new InDSCXDAO();
+			InDSCXDAO dscxdao = new MemoryInDSCXDAO();
 			TableDSCXGUI tableDSCXGUI = new TableDSCXGUI();
 			InDSCXControl inDscxControl = new InDSCXControl(dscxdao, tableDSCXGUI);
 			inDscxControl.execute();

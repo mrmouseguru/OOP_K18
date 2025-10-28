@@ -112,7 +112,7 @@ public class FormThemCXGUI extends JFrame{
 			//sihh viên code tiếp vào đây
 			ThemCXControl themCXControl = null;
 			ThemCXDAO themCXDAO = null;
-			themCXDAO = new ThemCXDAO();
+			themCXDAO = new MemoryThemCXDAO();
 			ThemCXResultDialogGUI resultDialogGUI = new ThemCXResultDialogGUI();
 			
 			ReqData request = new ReqData();
@@ -127,7 +127,7 @@ public class FormThemCXGUI extends JFrame{
 			if(loaiCX.equalsIgnoreCase("Nội Thành")) {
 				request.soTuyen = Integer.parseInt(txtSoTuyen.getText());
 				request.soKm = Double.parseDouble(txtSokm.getText());
-				
+				themCXControl = new ThemCXControlNoiThanh(resultDialogGUI, themCXDAO);
 				
 			}
 			
@@ -136,11 +136,7 @@ public class FormThemCXGUI extends JFrame{
 				request.ngayDi = Integer.parseInt(txtNgayDi.getText());
 			}
 			
-			themCXControl = new ThemCXControl(resultDialogGUI, themCXDAO);
-			
-			themCXControl.execute(request);
-			
-			
+			themCXControl.control(request);
 			
 		}
 		

@@ -1,6 +1,8 @@
 package QuanLyChuyenXe;
 
-public abstract class ChuyenXe {
+import java.io.Serializable;
+
+public abstract class ChuyenXe implements Serializable{
 	protected int maCX;
 	protected String hoTenTaiXe;
 	protected String soXe;

@@ -1,6 +1,12 @@
 package QuanLyChuyenXe.themCX;
 
+import java.util.ArrayList;
+
 public class ResData {
-	public String sucsessMessage; 
+	public ArrayList<String> listMessage;
+
+	public ResData() {
+		listMessage = new ArrayList<String>();
+	}
 
 }

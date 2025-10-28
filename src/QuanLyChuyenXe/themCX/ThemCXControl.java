@@ -1,46 +1,48 @@
 package QuanLyChuyenXe.themCX;
-
-import QuanLyChuyenXe.CXNoiThanh;
 import QuanLyChuyenXe.ChuyenXe;
 
-public class ThemCXControl {
-	ThemCXResultDialogGUI resultDialogGUI  = null;
-	private ThemCXDAO themCXDAO = null;
+public abstract class ThemCXControl {
+	protected ThemCXResultDialogGUI resultDialogGUI = null;
+	protected ThemCXDAO themCXDAO = null;
+	protected ChuyenXe cx = null;
+	protected ResData resData = null;
+	
 
+	
 	public ThemCXControl(ThemCXResultDialogGUI resultDialogGUI, ThemCXDAO themCXDAO) {
 		this.resultDialogGUI = resultDialogGUI;
 		this.themCXDAO = themCXDAO;
 	}
-
-	public void execute(ReqData rqData) {
-
-		ChuyenXe cx = null;
-
-		if (rqData.loaiCX.equals("Nội Thành")) {
-
-			cx = new CXNoiThanh(rqData.maCX, rqData.hoTenTX, rqData.soXe, 
-					rqData.gia, rqData.soTuyen, rqData.soKm);
-		}
-
-		if (rqData.loaiCX.equals("Ngoại Thành")) {
-
-			//cx = new CXNgoaiThanh
-			// xử lý ngoại lệ // alternate path
-
-		}
+	
+	
+	public void control(ReqData reqData) {
+		resData = new ResData();
+		isMaCXDuplicate(reqData.maCX);
+		execute(reqData);
 		
-		//insert
-		if(themCXDAO != null) {
-			themCXDAO.insert(cx);
-		}
-		
-		
-		ResData resData = new ResData();
-		resData.sucsessMessage = "Đã thêm thành công một CX!!";
-		if(resultDialogGUI != null) {
+		if(resData.listMessage.size() > 0) {
 			resultDialogGUI.show(resData);
+			return;
 		}
-
+		
+		insertCX();
+		
 	}
+	
+	
+	protected abstract void execute(ReqData rqData);
 
+	private void insertCX() {
+		themCXDAO.insert(cx);
+		resData.listMessage.add("Đã thêm CX thành công!");
+		resultDialogGUI.show(resData);
+	}
+	
+	private void isMaCXDuplicate(int maCX) {
+		boolean result = themCXDAO.checkMaCX(maCX);
+		if(!result) {
+			resData.listMessage.add("Mã " + maCX + "bị trùng !");
+		}
+	}
+	
 }

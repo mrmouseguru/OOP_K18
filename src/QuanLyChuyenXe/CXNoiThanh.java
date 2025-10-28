@@ -1,9 +1,25 @@
 package QuanLyChuyenXe;
 
+
 public class CXNoiThanh extends ChuyenXe{
 	
 	private int soTuyen;
 	private double soKm;
+	
+	public static boolean checkGia(double gia) {
+		if(gia > 5_000) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean checkSoKm(double km) {
+		if(km > 0.5) {
+			return true;
+		}
+		
+		return false;
+	}
 	
 	
 	

@@ -1,14 +1,12 @@
 package QuanLyChuyenXe.inDanhSachCX;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import QuanLyChuyenXe.ChuyenXe;
-import QuanLyChuyenXe.MemoryCXDatabase;
 
-public class InDSCXDAO {
+public interface InDSCXDAO {
 	
-	public ArrayList<ChuyenXe> getAllCX(){
-		return MemoryCXDatabase.getAll();
-	}
+	ArrayList<ChuyenXe> getAllCX() throws FileNotFoundException;
 
 }
