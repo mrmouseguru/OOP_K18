@@ -16,6 +16,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import QuanLyChuyenXe.xemChiTietCX.ChiTietCXGUI;
+import QuanLyChuyenXe.xemChiTietCX.MemoryXemChiTietCXDAO;
+import QuanLyChuyenXe.xemChiTietCX.ReqDataXemCT;
+import QuanLyChuyenXe.xemChiTietCX.XemChiTietCXControl;
+import QuanLyChuyenXe.xemChiTietCX.XemChiTietCXDAO;
+
 public class TableDSCXGUI extends JFrame {
 	private JTable table = null;
 	private String[] columns = { "Mã", "Loại", "Tài xế", "Số xe", "Giá", "Thành tiền" };
@@ -86,8 +92,17 @@ public class TableDSCXGUI extends JFrame {
 						return;
 					int modelRow = table.convertRowIndexToModel(viewRow);
 		            int ma = Integer.parseInt(model.getValueAt(modelRow, 0).toString());
-
-					JOptionPane.showMessageDialog(null, "mã cx: " + ma);
+		            
+		            ReqDataXemCT reqData = new ReqDataXemCT();
+		            reqData.maCX = ma;
+		            XemChiTietCXDAO chiTietCXDAO = new MemoryXemChiTietCXDAO();
+		            ChiTietCXGUI chiTietCXGUI = new ChiTietCXGUI();
+		            XemChiTietCXControl chiTietCXControl =
+		            		new XemChiTietCXControl(chiTietCXDAO, chiTietCXGUI);
+		            chiTietCXControl.execute(reqData);
+		            
+		            
+					
 				}
 			});
 		}

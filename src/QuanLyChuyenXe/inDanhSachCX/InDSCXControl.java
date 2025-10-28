@@ -26,15 +26,17 @@ public class InDSCXControl {
 			ds =  inDSCXDAO.getAllCX();
 		}catch(FileNotFoundException fNFE) {
 			ResData resError = new ResData();
-			resError.message = fNFE.getMessage();
+			resError.message = "Không tìm thấy file Database!!\n"+
+			fNFE.getMessage();
 			tableDSCXGUI.show(resError);
 			return;
 		}
+		
 		ArrayList<ResItem> resList  = null;
 		ResData resData = new ResData();
 		
 		
-		if(ds.size() > 0) {
+		if(ds != null) {
 			resList = convertToRes(ds);
 			resData.resList = resList;
 		}else {

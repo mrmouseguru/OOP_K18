@@ -98,8 +98,8 @@ public class QLCXMenuGUI extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//InDSCXDAO dscxdao = new MemoryInDSCXDAO();
-			InDSCXDAO dscxdao = new FileInDSCXDAO("cx.db"); 
+			InDSCXDAO dscxdao = new MemoryInDSCXDAO();
+			//InDSCXDAO dscxdao = new FileInDSCXDAO("cx.db"); 
 			TableDSCXGUI tableDSCXGUI = new TableDSCXGUI();
 			InDSCXControl inDscxControl = new InDSCXControl(dscxdao, tableDSCXGUI);
 			inDscxControl.execute();

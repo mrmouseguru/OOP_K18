@@ -46,6 +46,16 @@ public class CXNoiThanh extends ChuyenXe{
 		return tien;
 	}
 	
+
+	
 	//getters /setters
+	
+	public int getSoTuyen() {
+		return soTuyen;
+	}
+	
+	public double getSoKm() {
+		return soKm;
+	}
 
 }

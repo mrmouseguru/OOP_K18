@@ -9,7 +9,7 @@ public abstract class ThemCXControl {
 	
 
 	
-	public ThemCXControl(ThemCXResultDialogGUI resultDialogGUI, ThemCXDAO themCXDAO) {
+	protected ThemCXControl(ThemCXResultDialogGUI resultDialogGUI, ThemCXDAO themCXDAO) {
 		this.resultDialogGUI = resultDialogGUI;
 		this.themCXDAO = themCXDAO;
 	}

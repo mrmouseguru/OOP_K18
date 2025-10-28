@@ -20,7 +20,12 @@ public class FileInDSCXDAO implements InDSCXDAO {
 	@Override
 	public ArrayList<ChuyenXe> getAllCX() throws FileNotFoundException {
 		ArrayList<ChuyenXe> listCX = null;
-		listCX = new ArrayList<ChuyenXe>(getFromFile().values());
+		HashMap<Integer, ChuyenXe> memoryDB = null;
+		memoryDB =  getFromFile();
+		if(memoryDB != null) {
+			listCX = new ArrayList<ChuyenXe>(memoryDB.values());
+		}
+		
 		return listCX;
 	}
 

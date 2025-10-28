@@ -35,5 +35,11 @@ public class MemoryCXDatabase {
 	public static void main(String[] args) {
 		MemoryCXDatabase.getAll();
 	}
+	
+	public static ChuyenXe getCXById(int maCX) {
+		ChuyenXe cx = null;
+		cx = db.get(maCX);
+		return cx;
+	}
 
 }

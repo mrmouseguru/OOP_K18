@@ -112,8 +112,8 @@ public class FormThemCXGUI extends JFrame{
 			//sihh viên code tiếp vào đây
 			ThemCXControl themCXControl = null;
 			ThemCXDAO themCXDAO = null;
-			//themCXDAO = new MemoryThemCXDAO();
-			themCXDAO = new FileThemCXDAO("cx.db");
+			themCXDAO = new MemoryThemCXDAO();
+			//themCXDAO = new FileThemCXDAO("cx.db");
 			ThemCXResultDialogGUI resultDialogGUI = new ThemCXResultDialogGUI();
 			
 			ReqData request = new ReqData();
