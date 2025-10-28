@@ -58,10 +58,11 @@ public class FileThemCXDAO implements ThemCXDAO {
 	public boolean checkMaCX(int ma) {
 		HashMap<Integer, ChuyenXe> memoryTemp = null;
 		memoryTemp = getFromFile();
-		if (memoryTemp.get(ma) != null) {
-			return false;
+		if(memoryTemp != null) {
+			if (memoryTemp.get(ma) != null) {
+				return false;
+			}
 		}
-
 		return true;
 	}
 
@@ -82,13 +83,19 @@ public class FileThemCXDAO implements ThemCXDAO {
 			oIn = new ObjectInputStream(fileIn);
 			memoryDB = (HashMap<Integer, ChuyenXe>) oIn.readObject();
 
-			fileIn.close();
-			oIn.close();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		
+		try {
+			fileIn.close();
+			oIn.close();
+		}catch (Exception e) {
+			// TODO: handle exception
 		}
 
 		return memoryDB;
